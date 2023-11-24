@@ -1,0 +1,39 @@
+{# templates/recherche/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche d'Entreprises
+{% endblock %}
+
+{% block body %}
+	<h1>Recherche d'Entreprises</h1>
+	<form method="get" action="{{ path('recherche_entreprise') }}">
+		<input type="text" name="searchTerm" placeholder="Nom de l'entreprise" value="{{ searchTerm }}">
+		<button type="submit">Rechercher</button>
+	</form>
+
+	{% if entreprises is not empty %}
+		<ul>
+			{% for entreprise in entreprises %}
+				<li>
+					<h2>{{ entreprise.nom_complet ?? 'Non spécifié' }}</h2>
+					<p>
+						<strong>SIREN:</strong>
+						{{ entreprise.siren }}</p>
+					<p>
+						<strong>Raison Sociale:</strong>
+						{{ entreprise.nom_raison_sociale }}</p>
+					<p>
+						<strong>Adresse:</strong>
+						{{ entreprise.siege.adresse }}</p>
+					<p>
+						<strong>SIRET du Siège:</strong>
+						{{ entreprise.siege.siret }}</p>
+					<!-- Ajoutez d'autres informations si nécessaire -->
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>Aucune entreprise trouvée. Veuillez effectuer une recherche.</p>
+	{% endif %}
+{% endblock %}
