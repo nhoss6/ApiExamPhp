@@ -1,3 +1,7 @@
 controllers:
     resource: '../src/Controller/'
     type: 'annotation'
+
+salaire:
+    path: /salaire
+    controller: App\Controller\CalcuSalaireController::calculSalaire
