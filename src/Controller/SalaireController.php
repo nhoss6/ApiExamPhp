@@ -20,7 +20,7 @@ class SalaireController extends AbstractController
     #[Route('/salaire', name: 'app_salaire')]
     public function calculerSalaire(Request $request): Response
     {
-        $salaireBrut = $request->query->get('salaireBrut', 0);
+        $salaireBrut = $request->request->get('salaireBrut', 0);
 
         $data = null;
         if ($salaireBrut) {

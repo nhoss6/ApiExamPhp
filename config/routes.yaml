@@ -5,3 +5,7 @@ controllers:
 salaire:
     path: /salaire
     controller: App\Controller\CalcuSalaireController::calculSalaire
+
+
+api_login_check:
+    path: /api/login_check

@@ -41,4 +41,24 @@ class EntrepriseController extends AbstractController
 
         return $this->render('recherche.html.twig', ['entreprises' => $entreprises, 'searchTerm' => $searchTerm,]);
     }
+
+    #[Route('/sauvegarde', name: 'sauvegarde_entreprise', methods: ['POST'])]
+    public function sauvegarde(Request $request): Response
+    {
+        $data = $request->request->get('js-data', null);
+
+        if ($data) {
+            // on va sauvegarder le truc en locale dans un fichier
+
+            $path = $this->getParameter('app.sauvegarde_data');
+
+            $entreprise = json_decode($data, true);
+
+            $filename = $entreprise['siren'] . '.txt';
+
+            file_put_contents($path . '/' . $filename, $data);
+        }
+
+        return $this->redirectToRoute('app_salaire');
+    }
 }

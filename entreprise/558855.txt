@@ -1,0 +1,14 @@
+{
+	"siren" : "558855",
+	"raison_sociale" : "tdshjsd",
+	"adresse" : {
+		"Num" : 3,
+		"Voie" : " Rue de la paix ",
+		"Code_postale" : "54234",
+		"Ville" : "Lyon",
+		"GPS" : {
+			"Latitude" : "XX.XX ",
+			"Longitude" : "XX.XX"
+}
+}
+}

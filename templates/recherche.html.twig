@@ -29,6 +29,16 @@
 					<p>
 						<strong>SIRET du Siège:</strong>
 						{{ entreprise.siege.siret }}</p>
+
+					<p> 
+					
+						<form method="POST" action="{{ path('sauvegarde_entreprise')}}">
+							<input type="hidden" name="js-data" value="{{ entreprise|json_encode }}" /> 
+
+							<input type="submit" value="Choisir">
+						</form>
+
+					</p>
 					<!-- Ajoutez d'autres informations si nécessaire -->
 				</li>
 			{% endfor %}
