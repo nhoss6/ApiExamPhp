@@ -20,7 +20,7 @@ class SalaireController extends AbstractController
     #[Route('/salaire', name: 'app_salaire')]
     public function calculerSalaire(Request $request): Response
     {
-        $salaireBrut = $request->query->get('salaireBrut');
+        $salaireBrut = $request->query->get('salaireBrut', 0);
 
         $data = null;
         if ($salaireBrut) {
@@ -37,7 +37,9 @@ class SalaireController extends AbstractController
                             'salarié . contrat' => "'CDI'"
                         ],
                         'expressions' => [
-                            'salarié . rémunération . net . à payer avant impôt'
+                            'salarié . rémunération . net . à payer avant impôt',
+                            'salarié . coût total employeur'
+                            // Ajoutez d'autres expressions si nécessaire
                         ]
                     ]
                 ]

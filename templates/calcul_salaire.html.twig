@@ -1,3 +1,5 @@
+{# templates/salaire/index.html.twig #}
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Calcul du Salaire
@@ -5,16 +7,20 @@
 
 {% block body %}
 	<h1>Calcul du Salaire</h1>
-	<form method="get" action="{{ path('salaire') }}">
-		<input type="text" name="salaireBrut" placeholder="Salaire Brut" value="{{ salaireBrut }}">
+	<form method="post" action="{{ path('salaire') }}">
+		<input type="number" name="salaireBrut" placeholder="Salaire Brut" value="{{ salaireBrut }}">
 		<button type="submit">Calculer</button>
 	</form>
 
 	{% if data %}
 		<div>
-			{% set salaireNet = data.evaluate[0].nodeValue %}
 			<p>Salaire Net Avant Impôt:
-				{{ salaireNet }}</p>
+				{{ data['evaluate'][0]['nodeValue'] }}
+				€/mois</p>
+			<p>Coût Total Employeur:
+				{{ data['evaluate'][1]['nodeValue'] }}
+				€/mois</p>
+			<!-- Ajoutez d'autres résultats ici si nécessaire -->
 		</div>
 	{% else %}
 		<p>Entrez un salaire brut pour calculer le salaire net.</p>

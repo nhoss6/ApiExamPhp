@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calcul de la Gratification de Stage
+{% endblock %}
+
+{% block body %}
+	<h1>Calcul de la Gratification de Stage</h1>
+
+	<form method="post">
+		<div class="form-group">
+			<label for="siren">SIREN de l'entreprise :</label>
+			<input type="text" id="siren" name="siren" class="form-control" placeholder="Entrez le SIREN de l'entreprise">
+		</div>
+		<button type="submit" class="btn btn-primary">Calculer</button>
+	</form>
+
+	{% if data is not null %}
+		<h2>Résultat</h2>
+		<p>Gratification minimale :
+			{{ data[0]['nodeValue'] }}
+			{{ data[0]['unit']['numerators'][0] }}
+			par mois</p>
+	{% else %}
+		<p>Entrez un SIREN pour calculer la gratification minimale d'un stage.</p>
+	{% endif %}
+{% endblock %}
